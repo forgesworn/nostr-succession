@@ -1,0 +1,20 @@
+{
+  "name": "nostr-succession",
+  "version": "0.1.0",
+  "description": "Key succession for Nostr: a pre-committed migration key you never store, a successor that consents, and a client rule for when contacts follow on their own. Kinds 1360 and 1361.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
+  "files": ["dist", "vectors/succession.json", "LICENCE"],
+  "scripts": { "build": "tsc -p tsconfig.build.json", "test": "vitest run", "typecheck": "tsc --noEmit", "prepublishOnly": "npm run build" },
+  "keywords": ["nostr", "key-migration", "succession", "recovery", "nsec-tree", "bip-340"],
+  "author": "ForgeSworn",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/forgesworn/nostr-succession" },
+  "engines": { "node": ">=22" },
+  "publishConfig": { "provenance": true },
+  "dependencies": { "@noble/curves": "^2.0.1", "@noble/hashes": "^2.0.1", "nostr-tools": "2.23.9", "nsec-tree": "^1.5.1" },
+  "devDependencies": { "typescript": "^5.7.0", "vitest": "^5.0.0" },
+  "overrides": { "nostr-tools": "2.23.9" }
+}
