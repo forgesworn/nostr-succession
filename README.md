@@ -64,6 +64,15 @@ optional expected identity makes a mismatch manual. `evidenceFrom` derives
 the `contested` and `secondMigration` flags from fetched events by
 distinct id, so two clients count the same way.
 
+## What remains
+
+In the profile's own words, from its table of what can be compelled: a
+developer can still be pressured; the code and the network do not depend
+on them. A published succession makes losing the maintainer maintenance,
+not extinction, and nothing here stops anyone pressuring whoever holds the
+migration key today. The seven-day rule buys the owner a week to contest a
+move, not immunity from one.
+
 ## Licence
 
 MIT. ForgeSworn.
