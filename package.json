@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "test": "vitest run",
+    "test": "vitest run && node verifier/verify.mjs",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build"
   },

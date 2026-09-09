@@ -7,7 +7,7 @@ import { createFullProof } from 'nsec-tree/proof'
 import { finalizeEvent } from 'nostr-tools/pure'
 import { bytesToHex } from '@noble/hashes/utils.js'
 import { schnorr } from '@noble/curves/secp256k1.js'
-import { buildPrecommit, buildMigration, validateMigration, decide, predecessorKeys, consentMessage, KIND_MIGRATION, SEVEN_DAYS } from '../src/index.js'
+import { buildPrecommit, buildMigration, validateMigration, decide, evidenceFrom, predecessorKeys, consentMessage, KIND_MIGRATION, SEVEN_DAYS } from '../src/index.js'
 
 /** A migration built without the library's own refusals, to prove the verifier refuses it too. */
 function buildMigrationUnchecked(precommit: any, migrationPriv: Uint8Array, successorPriv: Uint8Array, createdAt: number) {
@@ -26,7 +26,7 @@ describe('known-answer vectors from the draft', () => {
       if (!c.expect.valid) return
       const d = decide(c.event, v.precommit, {
         precommitFirstSeen: c.firstSeen360,
-        migrationFirstSeen: c.firstSeen361 ?? c.event.created_at,
+        migrationFirstSeen: c.firstSeen361,
         precommitAttestedBefore: c.attestedBefore,
         identityRoot: { masterPubkey: v.testOnlyKeys.masterPubkey, firstSeen: c.rootBoundAt ?? v.rootBoundAt },
         contested: c.contested,
@@ -70,9 +70,10 @@ describe('building', () => {
   })
   it('the identity may not be its own migration key, and the successor must be a new key', () => {
     expect(() => buildPrecommit(identity.privateKey, getPublicKey(identity.privateKey), T0)).toThrow(/identity itself/)
-    const selfPre = { ...pre, tags: [['p', getPublicKey(identity.privateKey)]] }
+    // A properly signed pre-commitment naming its own author, so the identity check is what fails.
+    const selfPre = finalizeEvent({ kind: 1360, created_at: T0, tags: [['p', getPublicKey(identity.privateKey)]], content: '' }, identity.privateKey)
     const forged = buildMigrationUnchecked(selfPre, identity.privateKey, successor.privateKey, T1)
-    expect(validateMigration(forged, selfPre).valid).toBe(false)
+    expect(validateMigration(forged, selfPre)).toMatchObject({ valid: false, reason: 'the migration key is the identity itself' })
     expect(() => buildMigration({ precommit: pre, migrationPrivateKey: migration.privateKey, successorPrivateKey: migration.privateKey, createdAt: T1 })).toThrow(/new key/)
   })
   it('duplicate tags, upper-case hex and bad times are refused', () => {
@@ -80,8 +81,22 @@ describe('building', () => {
     // Re-sign with the extra tag so the signature is real and the duplicate is what fails.
     const dup = finalizeEvent({ kind: m.kind, created_at: m.created_at, content: m.content, tags: [...m.tags, ['p', getPublicKey(generateSecretKey())]] }, migration.privateKey)
     expect(validateMigration(dup, pre)).toMatchObject({ valid: false, reason: 'duplicate p tag' })
-    const upper = { ...m, tags: m.tags.map((t) => (t[0] === 'p' ? ['p', t[1]!.toUpperCase()] : t)) }
-    expect(validateMigration(upper, pre).valid).toBe(false)
+    // Re-signed with the successor in upper case: noble would accept the hex, the rule does not.
+    const upper = finalizeEvent({ kind: m.kind, created_at: m.created_at, content: m.content, tags: m.tags.map((t) => (t[0] === 'p' ? ['p', t[1]!.toUpperCase()] : [...t])) }, migration.privateKey)
+    expect(validateMigration(upper, pre)).toMatchObject({ valid: false, reason: 'p or successor-sig is not lowercase hex' })
+    for (const n of ['e', 'successor-sig', 'linkage']) {
+      // m carries no linkage, so that one needs two copies to be a duplicate.
+      const extra = n === 'linkage' ? [[n, 'x'], [n, 'y']] : [[n, 'x']]
+      const d = finalizeEvent({ kind: m.kind, created_at: m.created_at, content: m.content, tags: [...m.tags, ...extra] }, migration.privateKey)
+      expect(validateMigration(d, pre)).toMatchObject({ valid: false, reason: `duplicate ${n} tag` })
+    }
+    const twoP = finalizeEvent({ kind: 1360, created_at: T0, tags: [['p', getPublicKey(migration.privateKey)], ['p', getPublicKey(generateSecretKey())]], content: '' }, identity.privateKey)
+    expect(validateMigration(m, twoP)).toMatchObject({ valid: false, reason: 'pre-commitment names more than one migration key' })
+    const selfSucc = buildMigrationUnchecked(pre, migration.privateKey, migration.privateKey, T1)
+    expect(validateMigration(selfSucc, pre)).toMatchObject({ valid: false, reason: 'the successor must be a new key' })
+    // A signed event whose created_at is not an integer: the consent was made over T1, the event says T1.5.
+    const fractional = finalizeEvent({ kind: m.kind, created_at: T1 + 0.5, content: m.content, tags: m.tags.map((t) => [...t]) }, migration.privateKey)
+    expect(validateMigration(fractional, pre)).toMatchObject({ valid: false, reason: 'created_at out of range' })
     expect(() => consentMessage('00'.repeat(32), '00'.repeat(32), '00'.repeat(32), -1)).toThrow(RangeError)
     expect(validateMigration(null as any, pre).valid).toBe(false)
     expect(decide(m, pre, null).path).toBe('manual')
@@ -114,5 +129,57 @@ describe('building', () => {
     expect(predecessorKeys(JSON.stringify({ name: 'Ada', predecessor_keys: [getPublicKey(identity.privateKey), 'nope'] }))).toEqual([getPublicKey(identity.privateKey)])
     expect(predecessorKeys('not json')).toEqual([])
     void SEVEN_DAYS
+  })
+})
+
+describe('second pass, 2026-09-09', () => {
+  const root = fromNsec(hexToBytes('4873374aacd9fbbdf073a29078b6cf9f27c137107530c521458d5d83118ae733'))
+  const identity = derive(root, 'social', 0), migration = derive(root, 'migration', 0), successor = derive(root, 'successor', 0)
+  const T0 = 1_793_577_600, T1 = T0 + 30 * 24 * 3600
+  const pre = buildPrecommit(identity.privateKey, getPublicKey(migration.privateKey), T0)
+  const master = createFullProof(root, identity).masterPubkey
+  const m = buildMigration({ precommit: pre, migrationPrivateKey: migration.privateKey, successorPrivateKey: successor.privateKey, createdAt: T1 + 30 * 24 * 3600 })
+  it('a first-seen time in milliseconds is manual, not automatic', () => {
+    expect(decide(m, pre, { precommitFirstSeen: T1 - 3600, migrationFirstSeen: T1 * 1000 })).toMatchObject({ path: 'manual', because: 'first-seen time is not in seconds' })
+    expect(decide(m, pre, { precommitFirstSeen: T1 - 3600, migrationFirstSeen: T1 }).path).toBe('manual')
+    expect(decide(m, pre, { precommitFirstSeen: T0 * 1000, migrationFirstSeen: T1 }).path).toBe('manual')
+    expect(decide(m, pre, { precommitFirstSeen: T1 - 3600, migrationFirstSeen: T1 + 600, now: T1 })).toMatchObject({ path: 'manual', because: /in the future/ })
+  })
+  it('an accessor that shows signed tags to the hash and other tags afterwards is read once', () => {
+    const real = buildMigration({ precommit: pre, migrationPrivateKey: migration.privateKey, successorPrivateKey: successor.privateKey, createdAt: T1 })
+    const attacker = generateSecretKey()
+    const attackerConsent = bytesToHex(schnorr.sign(consentMessage(pre.pubkey, getPublicKey(migration.privateKey), getPublicKey(attacker), T1), attacker))
+    const swapped = real.tags.map((t) => (t[0] === 'p' ? ['p', getPublicKey(attacker)] : t[0] === 'successor-sig' ? ['successor-sig', attackerConsent] : t))
+    let reads = 0
+    const tricky = Object.defineProperty({ ...real }, 'tags', { get() { reads += 1; return reads <= 2 ? real.tags : swapped }, enumerable: true })
+    const v = validateMigration(tricky, pre)
+    // Either the copy was taken from the honest view and the honest successor is named, or it fails; never the attacker.
+    if (v.valid) expect(v.successor).toBe(getPublicKey(successor.privateKey))
+    expect(decide(tricky, pre, { precommitFirstSeen: T0, migrationFirstSeen: T1 })).not.toMatchObject({ path: 'automatic', successor: getPublicKey(attacker) })
+  })
+  it('a root binding to the identity itself, or to the migration key, is no linkage', () => {
+    const selfProof = createFullProof(root, successor)
+    const withLinkage = buildMigration({ precommit: pre, migrationPrivateKey: migration.privateKey, successorPrivateKey: successor.privateKey, linkage: selfProof, createdAt: T1 })
+    for (const bad of [pre.pubkey, getPublicKey(migration.privateKey)]) {
+      expect(decide(withLinkage, pre, { precommitFirstSeen: T1 - 60, migrationFirstSeen: T1, identityRoot: { masterPubkey: bad, firstSeen: T0 } }).path).toBe('manual')
+    }
+    expect(decide(withLinkage, pre, { precommitFirstSeen: T1 - 60, migrationFirstSeen: T1, identityRoot: { masterPubkey: master, firstSeen: T0 } }).path).toBe('automatic')
+  })
+  it('the verdict names the identity it is for, and a mismatch is manual', () => {
+    const d = decide(m, pre, { precommitFirstSeen: T0, migrationFirstSeen: T1 + 30 * 24 * 3600 })
+    expect(d).toMatchObject({ path: 'automatic', identity: pre.pubkey, successor: getPublicKey(successor.privateKey) })
+    expect(decide(m, pre, { precommitFirstSeen: T0, migrationFirstSeen: T1 + 30 * 24 * 3600 }, getPublicKey(generateSecretKey())).path).toBe('manual')
+  })
+  it('evidenceFrom derives contested and secondMigration by distinct id, ignoring forgeries', () => {
+    const other = buildPrecommit(identity.privateKey, getPublicKey(generateSecretKey()), T0 - 1)
+    const forgedPre = { ...other, id: 'ab'.repeat(32) }
+    expect(evidenceFrom(pre.pubkey, [pre], [m])).toMatchObject({ contested: false, secondMigration: false, precommit: { id: pre.id } })
+    expect(evidenceFrom(pre.pubkey, [pre, pre, forgedPre], [m]).contested).toBe(false)
+    expect(evidenceFrom(pre.pubkey, [pre, other], [m]).contested).toBe(true)
+    const second = buildMigration({ precommit: pre, migrationPrivateKey: migration.privateKey, successorPrivateKey: generateSecretKey(), createdAt: T1 + 1 })
+    const hinted = buildMigration({ precommit: pre, migrationPrivateKey: migration.privateKey, successorPrivateKey: successor.privateKey, createdAt: T1, relayHint: 'wss://r.example' })
+    expect(evidenceFrom(pre.pubkey, [pre], [m, m]).secondMigration).toBe(false)
+    expect(evidenceFrom(pre.pubkey, [pre], [m, second]).secondMigration).toBe(true)
+    expect(evidenceFrom(pre.pubkey, [pre], [m, hinted]).secondMigration).toBe(true)   // a different id is a different event, and only the first counts
   })
 })

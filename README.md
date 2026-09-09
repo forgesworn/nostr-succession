@@ -6,10 +6,11 @@ Two regular kinds. `1360` is a pre-commitment: the identity names one
 migration key, in advance and in public, so a thief who steals today's key
 cannot also invent the move. `1361` is the migration: the migration key
 names a successor, the successor signs its consent, and an optional linkage
-proof says the two keys share a root.
+proof, signed by the root's holder, vouches for the successor as the root's own.
 
-The migration key is derived from the root (nsec-tree purpose `migration`,
-index 0) and never stored. The identity is a child of that root, never the
+The migration key is meant to be derived from the root (nsec-tree purpose
+`migration`, index 0) and never stored; the library checks none of that,
+because it cannot. Any key the identity names is the migration key. The identity is a child of that root, never the
 root itself, or the commitment protects nothing.
 
 ```ts
@@ -42,16 +43,26 @@ migration by the same key makes everything manual, including the first.
 
 `validateMigration` refuses more than it accepts: the migration key must
 differ from the identity, the successor must be a key that is neither, every
-tag must appear exactly once, hex must be lower case, `created_at` must be a
+tag must appear exactly once (`linkage` at most once), hex must be lower case, `created_at` must be a
 safe non-negative integer, and the signature is always re-verified rather
 than trusted from a cache.
 
 Vectors in `vectors/succession.json` are the draft's known-answer file:
-fourteen cases including a hijack by a holder of the migration key, a second
+fourteen cases, each with the client's own first sight of both events, including a hijack by a holder of the migration key, a second
 migration by the same key, an OpenTimestamps attestation both old and fresh,
 a future-dated migration, a fresh root binding and a contested identity.
-`vectors/verify-succession.mjs` in the profile repo is a second, independent
-implementation of the same rules that must agree on every case.
+`verifier/verify.mjs` is a second implementation of the same rules, written
+from the draft's text and kept apart from the library's code; `npm test`
+runs both over the vectors and they must agree on every case.
+
+`decide` also refuses a first-seen time that is not in seconds (a
+millisecond timestamp would hand the decision to the signer's own date),
+a first-seen time later than `now` when `now` is given, and a root
+binding to the identity's own key or the migration key, which protect
+nothing. Its verdict names the identity and successor it is about, and an
+optional expected identity makes a mismatch manual. `evidenceFrom` derives
+the `contested` and `secondMigration` flags from fetched events by
+distinct id, so two clients count the same way.
 
 ## Licence
 
