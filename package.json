@@ -1,6 +1,6 @@
 {
   "name": "nostr-succession",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Key succession for Nostr: a pre-committed migration key you never store, a successor that consents, and a client rule for when contacts follow on their own. Kinds 1360 and 1361.",
   "type": "module",
   "main": "./dist/index.js",
