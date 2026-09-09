@@ -1,5 +1,10 @@
 # nostr-succession
 
+[![CI](https://github.com/forgesworn/nostr-succession/actions/workflows/ci.yml/badge.svg)](https://github.com/forgesworn/nostr-succession/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/nostr-succession)](https://www.npmjs.com/package/nostr-succession)
+[![licence: MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](./LICENCE)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/TheCryptoDonkey?logo=githubsponsors&color=ea4aaa&label=Sponsor)](https://github.com/sponsors/TheCryptoDonkey)
+
 **A key that can change, with a commitment made before it had to.**
 
 Two regular kinds. `1360` is a pre-commitment: the identity names one

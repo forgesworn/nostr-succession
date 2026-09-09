@@ -36,6 +36,14 @@
     "type": "git",
     "url": "https://github.com/forgesworn/nostr-succession"
   },
+  "homepage": "https://github.com/forgesworn/nostr-succession#readme",
+  "bugs": {
+    "url": "https://github.com/forgesworn/nostr-succession/issues"
+  },
+  "funding": {
+    "type": "lightning",
+    "url": "lightning:profusemeat89@walletofsatoshi.com"
+  },
   "engines": {
     "node": ">=22"
   },
