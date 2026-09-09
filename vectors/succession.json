@@ -26,7 +26,7 @@
     "migrationPub": "34aadb6ead1f5b2e888af61ad737dc708d388c3029aeb025fa788bc703d24e1c",
     "successorPrivHex": "84433372b964c0da1836a85615f15a3162e0dbcd8848aff38c05346b4a5b8ad7",
     "successorPub": "868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0",
-    "attackerPub": "38d2479a929f7107d0626c3f5fcd94b8b850283d68e29e12f000776393d8042a"
+    "attackerPub": "e19f8f3981c37b93c309240804a000a70ccc9a5824b5c80f77236189cef49a74"
   },
   "precommit": {
     "kind": 1360,
@@ -40,7 +40,7 @@
     "content": "",
     "pubkey": "0be74a16455478d46bcb92e32995e4a235c3a4a6a69cca30ebacf1330e5c8915",
     "id": "ecd158704865062633b968ea2b4c19f060aba77522c210e36644eba049faa3b2",
-    "sig": "24c0aa8c5567d1a563e35c7530353cce35fa81aa08efc6b4c4ba8a5bc24e5a503cd5508b4340a35f17c7bf31f379366ca6c3a25d445d379010022f95655ab7f7"
+    "sig": "198059dab8af2592cd02f7987768b00eff66810e127e6607ee387cedf34b15cc0378fb34fa9e4c7458ee7c6c58749a77a9deef4d7ea98a240af923316e48c79f"
   },
   "precommit2": {
     "kind": 1360,
@@ -48,13 +48,13 @@
     "tags": [
       [
         "p",
-        "38d2479a929f7107d0626c3f5fcd94b8b850283d68e29e12f000776393d8042a"
+        "e19f8f3981c37b93c309240804a000a70ccc9a5824b5c80f77236189cef49a74"
       ]
     ],
     "content": "",
     "pubkey": "0be74a16455478d46bcb92e32995e4a235c3a4a6a69cca30ebacf1330e5c8915",
-    "id": "12a6d90f9883cf12c1a2c6eef769538856a604b6cd5c6d04c82215f73ad705da",
-    "sig": "e3ee96221199bceb072851ed348bddd9e159b7fe4f3f9a989347daae8e2d3c3a9a8f8b5154d24cc71d4cdf82f7c097e1f786233aa6acd27234fce0335d695b6a"
+    "id": "2d709d4209df049fee0859637e571c5139d11ec663c7fa300aea68f9fa3093ef",
+    "sig": "78ce474542b07cff8a982146b704046d6c488ca5d2775d73d85c0f3b2c058dfb7c5cae8d1c0328d782dccbfe964cba4e9021f37c9a2be5c203588df6aed9a748"
   },
   "rootBoundAt": 1793577600,
   "linkage": {
@@ -63,7 +63,7 @@
     "purpose": "successor",
     "index": 0,
     "attestation": "nsec-tree:link|ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4|868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0|successor|0",
-    "signature": "8cce8fe997145bce22d51e70700d4fbf37b478eee3f43377f5d1400831d067e0a6b8bce29d647df7242aa531d800057b7806611adb2374547046a60bb3f5a1cd"
+    "signature": "8e88982cf0feb47afe5d3cc957773c899cd99e323d662eb0eb04d6534b0cd0798a88d2198dba20128d965566e297f3456349ee2fd369f6e414b5a0a1755b379e"
   },
   "cases": [
     {
@@ -88,17 +88,17 @@
           ],
           [
             "successor-sig",
-            "2f8bc7f368cee93d83a776e3f4e80080316d10b2b14c1e29ee9e6bd703043229dfb4b169b504fef5650bd6ad19b956dc012b3d085e703e5329c183b68712466c"
+            "ef678b2113738a0cef3e254afcac6f164055eeafdac16faf2f35ae1e3a3dad0734f188ef7145e15c2016583f8b99f3d6df86e831da77caf5cced9b484c76108c"
           ],
           [
             "linkage",
-            "{\"masterPubkey\":\"ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4\",\"childPubkey\":\"868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0\",\"purpose\":\"successor\",\"index\":0,\"attestation\":\"nsec-tree:link|ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4|868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0|successor|0\",\"signature\":\"8cce8fe997145bce22d51e70700d4fbf37b478eee3f43377f5d1400831d067e0a6b8bce29d647df7242aa531d800057b7806611adb2374547046a60bb3f5a1cd\"}"
+            "{\"masterPubkey\":\"ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4\",\"childPubkey\":\"868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0\",\"purpose\":\"successor\",\"index\":0,\"attestation\":\"nsec-tree:link|ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4|868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0|successor|0\",\"signature\":\"8e88982cf0feb47afe5d3cc957773c899cd99e323d662eb0eb04d6534b0cd0798a88d2198dba20128d965566e297f3456349ee2fd369f6e414b5a0a1755b379e\"}"
           ]
         ],
         "content": "",
         "pubkey": "34aadb6ead1f5b2e888af61ad737dc708d388c3029aeb025fa788bc703d24e1c",
-        "id": "c570de1779886f7f7166ab5eff2e363f1ec0b148b1ab5423d3d611be1f0d3b6f",
-        "sig": "3f10133238898dc3bad2696b4163f9708f59fd54e87a1700db6ee9eb9aae32a4a3ed298fe38aaf7e8fe23c68f909f76b27e4da9d69c07e1d2b6bdde7cbfcfad8"
+        "id": "a8ebb44121434f14cdb64a01e2bf7d14a1e1df1e302254dcd9d34d902fb21278",
+        "sig": "b070fc5b64a42e3f7e437f02ad0abd0f512d263ff0d544d9b737379419ce01d08af7feb4a3686995f046260ac858924ee28acc254525f948f28a662801f3a7b4"
       },
       "firstSeen360": 1793577600
     },
@@ -123,17 +123,17 @@
           ],
           [
             "successor-sig",
-            "950b0819ad8bde1b4220cfbeaa28c051fc7f7cca127f002056fe4aad944bee70f9bfcb353a609826bb73e2f38e45090a4f1de0d4345d91bb45a2deeaca12b4d2"
+            "3dcf92b3654365dc88e107fcbb9025a8d359dc2333becc1ecd5c4fc19587832a28cf047811750dfa7af43002ff460472fa4c1ef83b2862ac5baf237531b449af"
           ],
           [
             "linkage",
-            "{\"masterPubkey\":\"ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4\",\"childPubkey\":\"868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0\",\"purpose\":\"successor\",\"index\":0,\"attestation\":\"nsec-tree:link|ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4|868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0|successor|0\",\"signature\":\"8cce8fe997145bce22d51e70700d4fbf37b478eee3f43377f5d1400831d067e0a6b8bce29d647df7242aa531d800057b7806611adb2374547046a60bb3f5a1cd\"}"
+            "{\"masterPubkey\":\"ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4\",\"childPubkey\":\"868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0\",\"purpose\":\"successor\",\"index\":0,\"attestation\":\"nsec-tree:link|ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4|868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0|successor|0\",\"signature\":\"8e88982cf0feb47afe5d3cc957773c899cd99e323d662eb0eb04d6534b0cd0798a88d2198dba20128d965566e297f3456349ee2fd369f6e414b5a0a1755b379e\"}"
           ]
         ],
         "content": "",
         "pubkey": "34aadb6ead1f5b2e888af61ad737dc708d388c3029aeb025fa788bc703d24e1c",
-        "id": "02b595d8d2f8fc3660163fc4173db3bee583cbf2c7c918d154b41f655af5f94e",
-        "sig": "cb9874a3a80521d796dadfe19876fa21ba8421841e0586b26a1af30e0ce3a3f80e57b99b4255e0259604612200201c054fdebd03f6f4f76ff2efbf98f3029446"
+        "id": "aecda378c8fc9da7a3c6a101f7c4cf8afe908ecfcb10d259ab34c0b0990e426b",
+        "sig": "2b4080a946f14d0b2bb0ec8faf92075ddd5144c990a8809ffbad63a2871095d7ca7a5cef25c155890a009ed1ff6d1ee04a8cfce5ffefd019294dd197e1ccf420"
       },
       "firstSeen360": 1793577600
     },
@@ -158,17 +158,17 @@
           ],
           [
             "successor-sig",
-            "dc69ac4c45fb5bfb2cf048fc31c1da7ab275d7518dcf7c96f5e5544e822b935c8dd9b513aa8ef79d5fc99645eeca7e7c1bd87f4aa070996484879d36c74d3d7d"
+            "4de171e1282f27efe57313e87fc618ad7c58402d2a973d62b45dbcc65f13b9e46d3435e69ae592026b6b46cc5cbf9dc9b4df22e480ba011cdd8a4ae7e3b6f4ae"
           ],
           [
             "linkage",
-            "{\"masterPubkey\":\"ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4\",\"childPubkey\":\"868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0\",\"purpose\":\"successor\",\"index\":0,\"attestation\":\"nsec-tree:link|ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4|868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0|successor|0\",\"signature\":\"8cce8fe997145bce22d51e70700d4fbf37b478eee3f43377f5d1400831d067e0a6b8bce29d647df7242aa531d800057b7806611adb2374547046a60bb3f5a1cd\"}"
+            "{\"masterPubkey\":\"ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4\",\"childPubkey\":\"868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0\",\"purpose\":\"successor\",\"index\":0,\"attestation\":\"nsec-tree:link|ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4|868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0|successor|0\",\"signature\":\"8e88982cf0feb47afe5d3cc957773c899cd99e323d662eb0eb04d6534b0cd0798a88d2198dba20128d965566e297f3456349ee2fd369f6e414b5a0a1755b379e\"}"
           ]
         ],
         "content": "",
         "pubkey": "34aadb6ead1f5b2e888af61ad737dc708d388c3029aeb025fa788bc703d24e1c",
-        "id": "d74dbc73ac038f5376e10a676df656e30ce785ba9d2c7e3b9ab1e63e38a30206",
-        "sig": "5a91cb84879dc198a5af5e39148dda5ddbe693101730e921abf163bdc94910118a07f4791f5dfd98ff2322d7223f776e6dd5147cbdb922cf23199ce5139ba7a3"
+        "id": "a426a69d499ce23e00352dcc11747afb422088a19030a98db9258cb1937089dc",
+        "sig": "067f0a2f5e8b6f6ea6c1323823ae913bb2fb81722b985077f7c429d4d3edfe0941cb5ea84b985ef72092b0eef1ba620828248f796b007d1ccdaeca477de81171"
       },
       "firstSeen360": 1793577600
     },
@@ -194,13 +194,13 @@
           ],
           [
             "successor-sig",
-            "8d730bb1e4302d923a5197d2094741e5559e3fbacf94802021dd0281a0f4d60741e7d3cae4cd356afd5042f69b6f3930b6ba216d2a423c15e6cc8830fb916792"
+            "d76f1ee36ee20c38acd199c36939c6ec75e10a3f47a139672218302ddfd8052032610311972f478de1094c036ab00fc7b89e64bb71156a89aee4ded9283ec053"
           ]
         ],
         "content": "",
         "pubkey": "34aadb6ead1f5b2e888af61ad737dc708d388c3029aeb025fa788bc703d24e1c",
-        "id": "8bd4ae0969ecc74330b54ba7b4e591bb55cc392b503680ab826808cb0335962a",
-        "sig": "e049c72a15bf21eb8b6337505f454a828b916fa8e5f0ebb934a3f89bbe572e7ec6ff3fe69e020c000811f24ee5877615c79b86faa6c636924e9bf6b7b3f41d02"
+        "id": "2dfb94b795c10d73d7899bc78bdec3b8cfc060803aa4e68d12b7863376e4c821",
+        "sig": "d05a285f69bdb75ae0646812d4ca331ddf8b9e23d77c2721192ed744ab96c31b3a027251b0fe560f3702253bfcd2e42318ae81e52bc7d7bcd0039ae6b3928436"
       },
       "firstSeen360": 1796166000
     },
@@ -226,13 +226,13 @@
           ],
           [
             "successor-sig",
-            "8d730bb1e4302d923a5197d2094741e5559e3fbacf94802021dd0281a0f4d60741e7d3cae4cd356afd5042f69b6f3930b6ba216d2a423c15e6cc8830fb916792"
+            "d76f1ee36ee20c38acd199c36939c6ec75e10a3f47a139672218302ddfd8052032610311972f478de1094c036ab00fc7b89e64bb71156a89aee4ded9283ec053"
           ]
         ],
         "content": "",
         "pubkey": "34aadb6ead1f5b2e888af61ad737dc708d388c3029aeb025fa788bc703d24e1c",
-        "id": "8bd4ae0969ecc74330b54ba7b4e591bb55cc392b503680ab826808cb0335962a",
-        "sig": "e049c72a15bf21eb8b6337505f454a828b916fa8e5f0ebb934a3f89bbe572e7ec6ff3fe69e020c000811f24ee5877615c79b86faa6c636924e9bf6b7b3f41d02"
+        "id": "2dfb94b795c10d73d7899bc78bdec3b8cfc060803aa4e68d12b7863376e4c821",
+        "sig": "d05a285f69bdb75ae0646812d4ca331ddf8b9e23d77c2721192ed744ab96c31b3a027251b0fe560f3702253bfcd2e42318ae81e52bc7d7bcd0039ae6b3928436"
       },
       "firstSeen360": 1793577600
     },
@@ -240,8 +240,8 @@
       "name": "hijack-with-migration-key",
       "expect": {
         "valid": true,
-        "path": "automatic-if-precommit-old",
-        "reason": "an attacker holding the migration key can mint a consenting successor; only a pre-commitment older than the migration makes this automatic, which is the exposure any pre-commitment scheme accepts"
+        "path": "automatic",
+        "reason": "an attacker holding the migration key can mint a consenting successor; with a pre-commitment 30 days old this is automatic, which is the exposure any pre-commitment scheme accepts"
       },
       "event": {
         "kind": 1361,
@@ -249,7 +249,7 @@
         "tags": [
           [
             "p",
-            "38d2479a929f7107d0626c3f5fcd94b8b850283d68e29e12f000776393d8042a"
+            "e19f8f3981c37b93c309240804a000a70ccc9a5824b5c80f77236189cef49a74"
           ],
           [
             "e",
@@ -258,21 +258,55 @@
           ],
           [
             "successor-sig",
-            "4c2ebd19782ec6074625589cc1bd62e03947ecd38fa8e2925045e25338be112a4f018adc45e28ace91e963c28d9e6dbf9f39583e085b375d29a352cd417d413c"
+            "65447be1a0a9d570cca7dbc5f94858b3b5dfae4cce3bb5b8cfffe9449afb2ae31d985d1718df5f1bb3eaffaed1a6f178192a8cfbf4fea70157da2f8e26f9f354"
           ]
         ],
         "content": "",
         "pubkey": "34aadb6ead1f5b2e888af61ad737dc708d388c3029aeb025fa788bc703d24e1c",
-        "id": "76b9d7c1cac6bc2f8dd0f95f30feef5dc3b8109b4f9db95dd6b98b55d2d5402d",
-        "sig": "38131e4610ce66e76fee68e1cd4adb07618797337ee263c06a45b0c0cf02ee59923e73842ea1c15ea516f9c198c348cac1ae7cb00eec69355ecb343927cd8743"
+        "id": "8df5a7516de9502e6f69836c79a06d63a8536ab524fbe1be25e250f8c23d649a",
+        "sig": "423b1d4aefedeebe164aeb107182bd848758c1ac6a2ae92de5b8ff75f80bd07bdf8d1d6f0146cdd6047ee592c791ed3e0963d155609c413982e91aac54213fbf"
       },
       "firstSeen360": 1793577600
     },
     {
+      "name": "hijack-with-fresh-precommit",
+      "expect": {
+        "valid": true,
+        "path": "manual",
+        "reason": "the same hijack against a pre-commitment first seen an hour ago has no evidence behind it"
+      },
+      "event": {
+        "kind": 1361,
+        "created_at": 1796169600,
+        "tags": [
+          [
+            "p",
+            "e19f8f3981c37b93c309240804a000a70ccc9a5824b5c80f77236189cef49a74"
+          ],
+          [
+            "e",
+            "ecd158704865062633b968ea2b4c19f060aba77522c210e36644eba049faa3b2",
+            "wss://relay.example.org"
+          ],
+          [
+            "successor-sig",
+            "65447be1a0a9d570cca7dbc5f94858b3b5dfae4cce3bb5b8cfffe9449afb2ae31d985d1718df5f1bb3eaffaed1a6f178192a8cfbf4fea70157da2f8e26f9f354"
+          ]
+        ],
+        "content": "",
+        "pubkey": "34aadb6ead1f5b2e888af61ad737dc708d388c3029aeb025fa788bc703d24e1c",
+        "id": "8df5a7516de9502e6f69836c79a06d63a8536ab524fbe1be25e250f8c23d649a",
+        "sig": "423b1d4aefedeebe164aeb107182bd848758c1ac6a2ae92de5b8ff75f80bd07bdf8d1d6f0146cdd6047ee592c791ed3e0963d155609c413982e91aac54213fbf"
+      },
+      "firstSeen360": 1796166000,
+      "firstSeen361": 1796169600
+    },
+    {
       "name": "second-migration-same-key",
       "expect": {
-        "valid": false,
-        "reason": "only the first kind 1361 by a migration key counts; a client that sees two treats both as manual"
+        "valid": true,
+        "path": "manual",
+        "reason": "a second kind 1361 by the same migration key is well formed and consented, and its existence makes every migration by that key manual, including the first"
       },
       "event": {
         "kind": 1361,
@@ -280,7 +314,7 @@
         "tags": [
           [
             "p",
-            "38d2479a929f7107d0626c3f5fcd94b8b850283d68e29e12f000776393d8042a"
+            "e19f8f3981c37b93c309240804a000a70ccc9a5824b5c80f77236189cef49a74"
           ],
           [
             "e",
@@ -289,16 +323,121 @@
           ],
           [
             "successor-sig",
-            "0f862e302545b32071a51f7c1ebd6d2c6c7a5f3320613bc277e9f4c635dd13cc37afcc9f200a8475279b1028971b15da4d2e83e440bc0070facc4072b0736c62"
+            "cf3a8fb465e7ee1e8a80dafa83d9437ec2508b4e14a77fcf5bfe0ab1643226d8825a17f8fc5aff69d71329eaf0d2fca0c44339235ad6f36768c1ef331437818c"
           ]
         ],
         "content": "",
         "pubkey": "34aadb6ead1f5b2e888af61ad737dc708d388c3029aeb025fa788bc703d24e1c",
-        "id": "0a2e0ed2bbbe22ecfee70a1bede232256353b0a0cf73c6a71cce401fd0cfd6a2",
-        "sig": "a283c5356bb315b8f2aab553d2ce4f50ba7b2c2ad2dee49fe55f4a9ab1c187ce089e09d40f46f52313ad03d6309e21fa6ae85d76c31e0dfcf3ec71f0ae6fca20"
+        "id": "4f0a62393172bacf7cedad47dd2977a260ec33b87a5c138e51c571707797cb63",
+        "sig": "630d56ef833eff2d8cae2260acb8596abbe7ed3bf27be9deabdcae9d54fe77e6d7d294d5c36d541d2cfee45faf5b1145685a95af16f425e1ddcc81c87f78987b"
       },
       "firstSeen360": 1793577600,
-      "competesWith": "passes"
+      "secondMigration": true
+    },
+    {
+      "name": "first-migration-once-a-second-exists",
+      "expect": {
+        "valid": true,
+        "path": "manual",
+        "reason": "the first migration, with everything in its favour, becomes manual the moment a second one by the same key is seen"
+      },
+      "event": {
+        "kind": 1361,
+        "created_at": 1796169600,
+        "tags": [
+          [
+            "p",
+            "868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0"
+          ],
+          [
+            "e",
+            "ecd158704865062633b968ea2b4c19f060aba77522c210e36644eba049faa3b2",
+            "wss://relay.example.org"
+          ],
+          [
+            "successor-sig",
+            "ef678b2113738a0cef3e254afcac6f164055eeafdac16faf2f35ae1e3a3dad0734f188ef7145e15c2016583f8b99f3d6df86e831da77caf5cced9b484c76108c"
+          ],
+          [
+            "linkage",
+            "{\"masterPubkey\":\"ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4\",\"childPubkey\":\"868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0\",\"purpose\":\"successor\",\"index\":0,\"attestation\":\"nsec-tree:link|ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4|868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0|successor|0\",\"signature\":\"8e88982cf0feb47afe5d3cc957773c899cd99e323d662eb0eb04d6534b0cd0798a88d2198dba20128d965566e297f3456349ee2fd369f6e414b5a0a1755b379e\"}"
+          ]
+        ],
+        "content": "",
+        "pubkey": "34aadb6ead1f5b2e888af61ad737dc708d388c3029aeb025fa788bc703d24e1c",
+        "id": "a8ebb44121434f14cdb64a01e2bf7d14a1e1df1e302254dcd9d34d902fb21278",
+        "sig": "b070fc5b64a42e3f7e437f02ad0abd0f512d263ff0d544d9b737379419ce01d08af7feb4a3686995f046260ac858924ee28acc254525f948f28a662801f3a7b4"
+      },
+      "firstSeen360": 1793577600,
+      "secondMigration": true
+    },
+    {
+      "name": "attested-old",
+      "expect": {
+        "valid": true,
+        "path": "automatic",
+        "reason": "an OpenTimestamps attestation proves the pre-commitment existed 30 days before the migration"
+      },
+      "event": {
+        "kind": 1361,
+        "created_at": 1796169600,
+        "tags": [
+          [
+            "p",
+            "868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0"
+          ],
+          [
+            "e",
+            "ecd158704865062633b968ea2b4c19f060aba77522c210e36644eba049faa3b2",
+            "wss://relay.example.org"
+          ],
+          [
+            "successor-sig",
+            "d76f1ee36ee20c38acd199c36939c6ec75e10a3f47a139672218302ddfd8052032610311972f478de1094c036ab00fc7b89e64bb71156a89aee4ded9283ec053"
+          ]
+        ],
+        "content": "",
+        "pubkey": "34aadb6ead1f5b2e888af61ad737dc708d388c3029aeb025fa788bc703d24e1c",
+        "id": "2dfb94b795c10d73d7899bc78bdec3b8cfc060803aa4e68d12b7863376e4c821",
+        "sig": "d05a285f69bdb75ae0646812d4ca331ddf8b9e23d77c2721192ed744ab96c31b3a027251b0fe560f3702253bfcd2e42318ae81e52bc7d7bcd0039ae6b3928436"
+      },
+      "firstSeen360": 1796166000,
+      "firstSeen361": 1796169600,
+      "attestedBefore": 1793577600
+    },
+    {
+      "name": "attested-fresh",
+      "expect": {
+        "valid": true,
+        "path": "manual",
+        "reason": "an attestation an hour old is proof of existence before an attacker-chosen date, not of precedence; the seven-day gap applies to it too"
+      },
+      "event": {
+        "kind": 1361,
+        "created_at": 1796169600,
+        "tags": [
+          [
+            "p",
+            "868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0"
+          ],
+          [
+            "e",
+            "ecd158704865062633b968ea2b4c19f060aba77522c210e36644eba049faa3b2",
+            "wss://relay.example.org"
+          ],
+          [
+            "successor-sig",
+            "d76f1ee36ee20c38acd199c36939c6ec75e10a3f47a139672218302ddfd8052032610311972f478de1094c036ab00fc7b89e64bb71156a89aee4ded9283ec053"
+          ]
+        ],
+        "content": "",
+        "pubkey": "34aadb6ead1f5b2e888af61ad737dc708d388c3029aeb025fa788bc703d24e1c",
+        "id": "2dfb94b795c10d73d7899bc78bdec3b8cfc060803aa4e68d12b7863376e4c821",
+        "sig": "d05a285f69bdb75ae0646812d4ca331ddf8b9e23d77c2721192ed744ab96c31b3a027251b0fe560f3702253bfcd2e42318ae81e52bc7d7bcd0039ae6b3928436"
+      },
+      "firstSeen360": 1796166000,
+      "firstSeen361": 1796169600,
+      "attestedBefore": 1796166000
     },
     {
       "name": "future-dated-1361",
@@ -322,13 +461,13 @@
           ],
           [
             "successor-sig",
-            "dd1029abc02368cc18943a545599fbd5e0e48acfd39c7de7da15ef41358cc8da52ce37e9f4d43b999717b97a7e5ad2795163c00bd730a122fd5627ae7fad0ce0"
+            "2e6492847b08c54f1c8f3eaa604a75bddf8bbad8827a4e68b849172fef75fd9236474093fad948198f9fe10dc87d6f0a50b7346cd0ba75b4a8c40219283cd860"
           ]
         ],
         "content": "",
         "pubkey": "34aadb6ead1f5b2e888af61ad737dc708d388c3029aeb025fa788bc703d24e1c",
-        "id": "84054bd8a4067b7fd169c1a68aa954e154339b8d90d85eb65b44685ad225b3c9",
-        "sig": "6f4df867e0c5e735f8a0747b7f574133216b57d06818850efc238ab7bc6885925f210c68e1210edafca4d4d24ed6cd1fe99afb13301e034698a7f8b148ec86a3"
+        "id": "859d5860e966881bb7bcf3ee60c0531ca83501b7e7398aa7d1b8ef89c181bdc3",
+        "sig": "9859e9816cf0b042dff9ed2930b32b39c3f014b4fd2a469b990654019ba74f4b2c731c6c12b647a8c96d708df29c474cbacf691ab9d612d7b9ab1cb8b6698086"
       },
       "firstSeen360": 1796166000,
       "firstSeen361": 1796169600
@@ -355,17 +494,17 @@
           ],
           [
             "successor-sig",
-            "2f8bc7f368cee93d83a776e3f4e80080316d10b2b14c1e29ee9e6bd703043229dfb4b169b504fef5650bd6ad19b956dc012b3d085e703e5329c183b68712466c"
+            "ef678b2113738a0cef3e254afcac6f164055eeafdac16faf2f35ae1e3a3dad0734f188ef7145e15c2016583f8b99f3d6df86e831da77caf5cced9b484c76108c"
           ],
           [
             "linkage",
-            "{\"masterPubkey\":\"ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4\",\"childPubkey\":\"868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0\",\"purpose\":\"successor\",\"index\":0,\"attestation\":\"nsec-tree:link|ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4|868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0|successor|0\",\"signature\":\"8cce8fe997145bce22d51e70700d4fbf37b478eee3f43377f5d1400831d067e0a6b8bce29d647df7242aa531d800057b7806611adb2374547046a60bb3f5a1cd\"}"
+            "{\"masterPubkey\":\"ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4\",\"childPubkey\":\"868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0\",\"purpose\":\"successor\",\"index\":0,\"attestation\":\"nsec-tree:link|ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4|868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0|successor|0\",\"signature\":\"8e88982cf0feb47afe5d3cc957773c899cd99e323d662eb0eb04d6534b0cd0798a88d2198dba20128d965566e297f3456349ee2fd369f6e414b5a0a1755b379e\"}"
           ]
         ],
         "content": "",
         "pubkey": "34aadb6ead1f5b2e888af61ad737dc708d388c3029aeb025fa788bc703d24e1c",
-        "id": "c570de1779886f7f7166ab5eff2e363f1ec0b148b1ab5423d3d611be1f0d3b6f",
-        "sig": "3f10133238898dc3bad2696b4163f9708f59fd54e87a1700db6ee9eb9aae32a4a3ed298fe38aaf7e8fe23c68f909f76b27e4da9d69c07e1d2b6bdde7cbfcfad8"
+        "id": "a8ebb44121434f14cdb64a01e2bf7d14a1e1df1e302254dcd9d34d902fb21278",
+        "sig": "b070fc5b64a42e3f7e437f02ad0abd0f512d263ff0d544d9b737379419ce01d08af7feb4a3686995f046260ac858924ee28acc254525f948f28a662801f3a7b4"
       },
       "firstSeen360": 1796166000,
       "firstSeen361": 1796169600,
@@ -393,17 +532,17 @@
           ],
           [
             "successor-sig",
-            "2f8bc7f368cee93d83a776e3f4e80080316d10b2b14c1e29ee9e6bd703043229dfb4b169b504fef5650bd6ad19b956dc012b3d085e703e5329c183b68712466c"
+            "ef678b2113738a0cef3e254afcac6f164055eeafdac16faf2f35ae1e3a3dad0734f188ef7145e15c2016583f8b99f3d6df86e831da77caf5cced9b484c76108c"
           ],
           [
             "linkage",
-            "{\"masterPubkey\":\"ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4\",\"childPubkey\":\"868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0\",\"purpose\":\"successor\",\"index\":0,\"attestation\":\"nsec-tree:link|ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4|868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0|successor|0\",\"signature\":\"8cce8fe997145bce22d51e70700d4fbf37b478eee3f43377f5d1400831d067e0a6b8bce29d647df7242aa531d800057b7806611adb2374547046a60bb3f5a1cd\"}"
+            "{\"masterPubkey\":\"ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4\",\"childPubkey\":\"868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0\",\"purpose\":\"successor\",\"index\":0,\"attestation\":\"nsec-tree:link|ce14bdb94e9459c155dd86551de426ff2aaa8898fd532c9963808b57c4fcd3b4|868569af77d2d17e38ef97c2a242b6c37aafef6e1f164041e250167aa4a55bb0|successor|0\",\"signature\":\"8e88982cf0feb47afe5d3cc957773c899cd99e323d662eb0eb04d6534b0cd0798a88d2198dba20128d965566e297f3456349ee2fd369f6e414b5a0a1755b379e\"}"
           ]
         ],
         "content": "",
         "pubkey": "34aadb6ead1f5b2e888af61ad737dc708d388c3029aeb025fa788bc703d24e1c",
-        "id": "c570de1779886f7f7166ab5eff2e363f1ec0b148b1ab5423d3d611be1f0d3b6f",
-        "sig": "3f10133238898dc3bad2696b4163f9708f59fd54e87a1700db6ee9eb9aae32a4a3ed298fe38aaf7e8fe23c68f909f76b27e4da9d69c07e1d2b6bdde7cbfcfad8"
+        "id": "a8ebb44121434f14cdb64a01e2bf7d14a1e1df1e302254dcd9d34d902fb21278",
+        "sig": "b070fc5b64a42e3f7e437f02ad0abd0f512d263ff0d544d9b737379419ce01d08af7feb4a3686995f046260ac858924ee28acc254525f948f28a662801f3a7b4"
       },
       "firstSeen360": 1793577600,
       "contested": true

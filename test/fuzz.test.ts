@@ -47,11 +47,11 @@ describe('fuzz: validateMigration', () => {
     for (let i = 0; i < N; i++) {
       const ev = {
         precommitFirstSeen: Math.floor(r() * 2e9),
-        migrationFirstSeen: r() < 0.5 ? Math.floor(r() * 2e9) : undefined,
+        migrationFirstSeen: Math.floor(r() * 2e9),
         precommitAttestedBefore: r() < 0.3 ? Math.floor(r() * 2e9) : undefined,
         identityRoot: r() < 0.3 ? { masterPubkey: v.testOnlyKeys.masterPubkey, firstSeen: Math.floor(r() * 2e9) } : undefined,
-        bondWithSuccessor: r() < 0.2,
-        trustedAttestation: r() < 0.2,
+        bondedSuccessor: r() < 0.2 ? good.tags.find((t) => t[0] === 'p')![1] : undefined,
+        attestedSuccessor: r() < 0.2 ? 'ab'.repeat(32) : undefined,
         contested: r() < 0.2,
         secondMigration: r() < 0.2,
       }
@@ -60,7 +60,7 @@ describe('fuzz: validateMigration', () => {
       expect(['automatic', 'manual']).toContain(d.path)
       if (ev.contested || ev.secondMigration) expect(d.path).toBe('manual')
     }
-    expect(decide(good, pre, { precommitFirstSeen: good.created_at }).path).toBe('manual')
+    expect(decide(good, pre, { precommitFirstSeen: good.created_at, migrationFirstSeen: good.created_at }).path).toBe('manual')
   })
   it('predecessorKeys never throws', () => {
     for (const s of ['', '{', '[]', '{"predecessor_keys": 5}', '{"predecessor_keys": ["zz", 3, null]}']) expect(() => predecessorKeys(s)).not.toThrow()
