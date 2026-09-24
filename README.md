@@ -18,6 +18,12 @@ The migration key is meant to be derived from the root (nsec-tree purpose
 because it cannot. Any key the identity names is the migration key. The identity is a child of that root, never the
 root itself, or the commitment protects nothing.
 
+## Install
+
+```
+npm install nostr-succession
+```
+
 ```ts
 import { buildPrecommit, buildMigration, validateMigration, decide } from 'nostr-succession'
 
