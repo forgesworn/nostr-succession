@@ -14,7 +14,8 @@
   "files": [
     "dist",
     "vectors/succession.json",
-    "LICENCE"
+    "LICENCE",
+    "llms.txt"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",

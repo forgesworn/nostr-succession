@@ -1,0 +1,84 @@
+# nostr-succession
+
+> A Nostr identity's key can be stolen, but a successor named only after the
+> theft cannot be trusted: the thief could name one too. nostr-succession is
+> a TypeScript library for kinds 1360 and 1361, a pre-committed migration key
+> and a consenting successor, so a client can tell a real handover from a
+> hijack.
+
+For wallets and clients that need to decide, automatically or with a
+prompt, whether to follow a Nostr identity to a new key. The identity
+pre-commits to one migration key in advance (kind 1360); when the move
+happens, that migration key names a successor who signs consent (kind
+1361). A client applies `decide` to the pair plus what it has itself
+observed, and only follows automatically when the pre-commitment
+demonstrably predates the migration by seven days, a bond ceremony
+confirmed the successor, a trusted attestation named the successor, or the
+successor shares a root bound to the identity seven days earlier.
+
+## Getting Started
+
+```
+npm install nostr-succession
+```
+
+```ts
+import { buildPrecommit, buildMigration, validateMigration, decide } from 'nostr-succession'
+
+// Day one: commit, and never think about it again.
+publish(buildPrecommit(identityPrivateKey, migrationPub))
+
+// The day it must move.
+const m = buildMigration({ precommit, migrationPrivateKey, successorPrivateKey, linkage })
+
+// A client deciding whether to follow on its own.
+const v = validateMigration(m, precommit)          // consent verified, or a reason
+const d = decide(m, precommit, { precommitFirstSeen, migrationFirstSeen, identityRoot, bondedSuccessor })
+// d.path is 'automatic' or 'manual', d.because says why
+```
+
+## Key Concepts
+
+- **Pre-commitment (kind 1360)**: the identity names one migration key in
+  advance, or none. A thief who steals today's key cannot also invent a
+  migration key that was never committed to.
+- **Migration (kind 1361)**: the migration key names a successor, the
+  successor signs consent over identity, migration and successor keys, and
+  an optional linkage proof vouches for the successor as the root's own
+  child.
+- **`decide`**: never automatic on consent alone. It weighs the evidence a
+  client itself holds: how long ago the pre-commitment was first seen or
+  attested, a bond ceremony, a trusted attestation, or a shared root bound
+  to the identity seven days earlier.
+- **Seven-day rule**: buys the identity's owner a week to contest a move
+  before a client follows automatically; it is not immunity from a
+  contested move.
+- **Vectors**: `vectors/succession.json` holds fourteen known-answer cases;
+  `verifier/verify.mjs` is a second implementation from the draft's text
+  that must agree with the library on every case.
+
+## API Surface
+
+- `buildPrecommit(identityPrivateKey, migrationPub, createdAt?)` builds and
+  signs a kind 1360 event.
+- `buildMigration(options)` builds and signs a kind 1361 event; options are
+  `precommit`, `migrationPrivateKey`, `successorPrivateKey`, an optional
+  `linkage` proof, `relayHint` and `createdAt`.
+- `validateMigration(migration, precommit)` checks a migration is
+  well-formed and consented to; returns `{ valid: true, ... }` or
+  `{ valid: false, reason }`.
+- `decide(migration, precommit, evidence, expectedIdentity?)` returns a
+  `Path`: `{ path: 'automatic' | 'manual', because, ... }`.
+- `evidenceFrom(identity, precommits, migrations)` derives the `contested`
+  and `secondMigration` flags from fetched events, deduped by id.
+- `predecessorKeys(profileContent)` reads a successor's `predecessor_keys`
+  from its kind 0 content.
+- `consentMessage`, `KIND_PRECOMMIT`, `KIND_MIGRATION`, `DOMAIN`,
+  `SEVEN_DAYS` and `filters` (REQ filters for precommits and migrations)
+  are also exported.
+
+## Optional
+
+- [README](./README.md): full protocol description, including what the
+  seven-day rule does and does not protect against.
+- [CHANGELOG](./CHANGELOG.md)
